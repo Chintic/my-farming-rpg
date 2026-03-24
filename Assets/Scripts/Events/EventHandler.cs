@@ -85,4 +85,38 @@ public static class EventHandler
     {
         AdvanceGameMinuteEvent?.Invoke(gameYear, gameSeason, gameDay, gameDayOfWeek, gameHour, gameMinute, gameSecond);
     }
+
+    // Scene Load Events - in the order they happen
+
+    // Before Scene Unload Fade Out Event
+    public static event Action BeforeSceneUnloadFadeOutEvent;
+
+    public static void CallBeforeSceneUnloadFadeOutEvent()
+    {
+        BeforeSceneUnloadFadeOutEvent?.Invoke();
+    }
+
+    // Before Scene Unload Event
+    public static event Action BeforeSceneUnloadEvent;
+
+    public static void CallBeforeSceneUnloadEvent()
+    {
+        BeforeSceneUnloadEvent?.Invoke();
+    }
+
+    // After Scene Loaded Event
+    public static event Action AfterSceneLoadEvent;
+
+    public static void CallAfterSceneLoadEvent()
+    {
+        AfterSceneLoadEvent?.Invoke();
+    }
+
+    // After Scene Load Fade In Event
+    public static event Action AfterSceneLoadFadeInEvent;
+
+    public static void CallAfterSceneLoadFadeInEvent()
+    {
+        AfterSceneLoadFadeInEvent?.Invoke();
+    }
 }
