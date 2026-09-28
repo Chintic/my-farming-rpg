@@ -2083,7 +2083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &792937811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2114,7 +2114,7 @@ CanvasGroup:
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  m_IgnoreParentGroups: 1
 --- !u!114 &792937813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2708,7 +2708,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7768022, y: 1}
+    m_SensorSize: {x: 1.7774343, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
