@@ -3,16 +3,20 @@ using Cinemachine;
 
 public class SwitchConfineBoundingShape : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        SwitchBoundingShape();
+        EventHandler.AfterSceneLoadEvent += SwitchBoundingShape;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.AfterSceneLoadEvent -= SwitchBoundingShape;
     }
 
     /// <summary>
     /// Altera a colisão que o cinemachine usa para definir as bordas da tela
     /// </summary>
-private void SwitchBoundingShape()
+    private void SwitchBoundingShape()
     {
         PolygonCollider2D polygonCollider2D = GameObject.FindGameObjectWithTag(Tags.BoundsConfiner).GetComponent<PolygonCollider2D>();
 

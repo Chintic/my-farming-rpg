@@ -32,11 +32,20 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         slotNumber = transform.GetSiblingIndex();
     }
 
+    private void OnEnable()
+    {
+        EventHandler.AfterSceneLoadEvent += SceneLoaded;
+    }
+
+
+    private void OnDisable()
+    {
+        EventHandler.AfterSceneLoadEvent -= SceneLoaded;
+    }
 
     private void Start()
     {
         mainCamera = Camera.main;
-        parentItem = GameObject.FindGameObjectWithTag(Tags.ItemsParentTransform).transform;
     }
 
 
@@ -220,4 +229,9 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         Destroy(tooltipInstance.gameObject);
     }
     */
-}
+
+    private void SceneLoaded()
+    {
+        parentItem = GameObject.FindGameObjectWithTag(Tags.ItemsParentTransform).transform;
+    }
+}   
