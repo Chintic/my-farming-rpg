@@ -10,6 +10,7 @@ public class SceneControllerManager : SingletonMonobehavior<SceneControllerManag
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private CanvasGroup faderCanvasGroup = null;
     [SerializeField] private Image faderImage = null;
+    [SerializeField] private Image loadImage = null;
     public SceneName startingSceneName;
 
     private IEnumerator Fade(float finalAlpha)
@@ -46,25 +47,36 @@ public class SceneControllerManager : SingletonMonobehavior<SceneControllerManag
         // Call before scene unload fade out event
         EventHandler.CallBeforeSceneUnloadFadeOutEvent();
 
-        // Start fading to black and wait for it to finish before continuing.
+        // Fade to black
         yield return StartCoroutine(Fade(1f));
 
-        // Set player position
-        Player.Instance.gameObject.transform.position = spawnPosition;
+        // Show loading image
+        //loadImage.gameObject.SetActive(true);
 
-        // Call before scene unload event.
+        // Set player position
+        Player.Instance.transform.position = spawnPosition;
+
+        // Call before scene unload event
         EventHandler.CallBeforeSceneUnloadEvent();
 
-        // Unload the current active scene.
-        yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        // Unload current scene
+        yield return SceneManager.UnloadSceneAsync(
+            SceneManager.GetActiveScene().buildIndex
+        );
 
-        // Start loading the given scene and wait for it to finish.
+        // Load new scene
         yield return StartCoroutine(LoadSceneAndSetActive(sceneName));
 
         // Call after scene load event
         EventHandler.CallAfterSceneLoadEvent();
 
-        // Start fading back in and wait for it to finish before exiting the function.
+        // Keep loading image visible for 1 second
+        // return new WaitForSeconds(1f);
+
+        // Hide loading image
+        //loadImage.gameObject.SetActive(false);
+
+        // Fade back in
         yield return StartCoroutine(Fade(0f));
 
         // Call after scene load fade in event
@@ -73,13 +85,17 @@ public class SceneControllerManager : SingletonMonobehavior<SceneControllerManag
 
     private IEnumerator LoadSceneAndSetActive(string sceneName)
     {
-        // Allow the given scene to load over several frames and add it to the already loaded scenes (just the Persistent scene at this point).
-        yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        // Load scene additively
+        yield return SceneManager.LoadSceneAsync(
+            sceneName,
+            LoadSceneMode.Additive
+        );
 
-        // Find the scene that was most recently loaded (the one at the last index of the loaded scenes).
-        Scene newlyLoadedScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
+        // Get the newly loaded scene
+        Scene newlyLoadedScene =
+            SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
 
-        // Set the newly loaded scene as the active scene (this marks it as the one to be unloaded next).
+        // Set it as the active scene
         SceneManager.SetActiveScene(newlyLoadedScene);
     }
 
