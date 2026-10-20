@@ -53,6 +53,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.51481056
       objectReference: {fileID: 0}
+    - target: {fileID: 5098326605493617308, guid: f9fecd42770c3554bb4b5ef93a9c5cb0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6842761923925180062, guid: f9fecd42770c3554bb4b5ef93a9c5cb0,
         type: 3}
       propertyPath: m_LocalPosition.x
