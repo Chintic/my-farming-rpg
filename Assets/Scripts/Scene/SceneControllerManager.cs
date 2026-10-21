@@ -10,7 +10,7 @@ public class SceneControllerManager : SingletonMonobehavior<SceneControllerManag
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private CanvasGroup faderCanvasGroup = null;
     [SerializeField] private Image faderImage = null;
-    [SerializeField] private Image loadImage = null;
+    // [SerializeField] private Image loadImage = null;
     public SceneName startingSceneName;
 
     private IEnumerator Fade(float finalAlpha)
