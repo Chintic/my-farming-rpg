@@ -1874,6 +1874,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 574146803}
+  - component: {fileID: 574146805}
+  - component: {fileID: 574146804}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1895,6 +1897,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &574146804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574146802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3918e204d5b07fb4faa207b2e0b2bfd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 0}
+--- !u!114 &574146805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574146802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e72314fbda62dd48932c205aba1d1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gUID: 42f185be-abc6-45fa-ba04-22b5de00ac56
 --- !u!1 &700506601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,7 +2853,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3326,7 +3354,6 @@ MonoBehaviour:
   fadeDuration: 1
   faderCanvasGroup: {fileID: 792937812}
   faderImage: {fileID: 792937813}
-  loadImage: {fileID: 841043680}
   startingSceneName: 0
 --- !u!1 &1489965993
 GameObject:
