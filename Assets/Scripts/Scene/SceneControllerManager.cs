@@ -50,6 +50,9 @@ public class SceneControllerManager : SingletonMonobehavior<SceneControllerManag
         // Fade to black
         yield return StartCoroutine(Fade(1f));
 
+        // Store scene data
+        SaveLoadManager.Instance.StoreCurrentSceneData();
+
         // Show loading image
         //loadImage.gameObject.SetActive(true);
 
@@ -75,6 +78,9 @@ public class SceneControllerManager : SingletonMonobehavior<SceneControllerManag
 
         // Hide loading image
         //loadImage.gameObject.SetActive(false);
+
+        // Restore new scene data
+        SaveLoadManager.Instance.RestoreCurrentSceneData();
 
         // Fade back in
         yield return StartCoroutine(Fade(0f));
@@ -110,6 +116,8 @@ public class SceneControllerManager : SingletonMonobehavior<SceneControllerManag
 
         // If this event has any subscribers, call it.
         EventHandler.CallAfterSceneLoadEvent();
+
+        SaveLoadManager.Instance.RestoreCurrentSceneData();
 
         // Once the scene is finished loading, start fading in.
         StartCoroutine(Fade(0f));

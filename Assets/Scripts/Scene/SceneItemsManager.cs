@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GenerateGUID))]
-public class SceneItemManager : SingletonMonobehavior<SceneItemManager>, ISaveable
+public class SceneItemsManager : SingletonMonobehavior<SceneItemsManager>, ISaveable
 {
     private Transform parentItem;
     [SerializeField] private GameObject itemPrefab = null;
